@@ -1,5 +1,5 @@
 # Site Settings
-title: Arangel blog
+title: Nomod
 description: Stories, Journeys, and Ideas for the Creatively Curious
 url: ""
 baseurl: ""
@@ -7,7 +7,7 @@ permalink: /:title/
 
 # Author
 author:
-  name: Aderson Rangl
+  name: Your Name
   bio: Join us on a journey where every post brings a fresh perspective. This blog is for those who are driven by curiosity and a desire to learn.
   avatar: /assets/images/avatar.jpg
 
@@ -29,7 +29,6 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-paginate
 
 # Pagination (requires jekyll-paginate-v2 for more features)
 paginate: 6
@@ -76,4 +75,3 @@ exclude:
   - node_modules
   - vendor
   - README.md
-  - template

@@ -1,0 +1,26 @@
+---
+layout: default
+title: Authors
+description: Meet the talented writers and creators behind our content.
+---
+
+<section class="section">
+  <div class="container">
+    <header class="page-header">
+      <h1>{{ page.title }}</h1>
+      <p>{{ page.description }}</p>
+    </header>
+    
+    <div class="grid grid--3">
+      {% for author in site.authors %}
+      {% include author-card.html author=author %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow">
+    {% include newsletter.html %}
+  </div>
+</section>

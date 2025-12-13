@@ -1,0 +1,199 @@
+// ============================================
+// BASE STYLES & RESET
+// ============================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-primary;
+  font-size: 1rem;
+  line-height: 1.7;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color $transition-base, color $transition-base;
+  overflow-x: hidden;
+}
+
+// CSS Custom Properties for theming
+:root {
+  --bg: #{$light-bg};
+  --bg-secondary: #{$light-bg-secondary};
+  --bg-tertiary: #{$light-bg-tertiary};
+  --text: #{$light-text};
+  --text-secondary: #{$light-text-secondary};
+  --text-tertiary: #{$light-text-tertiary};
+  --border: #{$light-border};
+  --border-hover: #{$light-border-hover};
+  --accent: #{$accent-primary};
+  --accent-secondary: #{$accent-secondary};
+  --shadow: #{$shadow-md};
+}
+
+[data-theme="dark"] {
+  --bg: #{$dark-bg};
+  --bg-secondary: #{$dark-bg-secondary};
+  --bg-tertiary: #{$dark-bg-tertiary};
+  --text: #{$dark-text};
+  --text-secondary: #{$dark-text-secondary};
+  --text-tertiary: #{$dark-text-tertiary};
+  --border: #{$dark-border};
+  --border-hover: #{$dark-border-hover};
+}
+
+// ============================================
+// TYPOGRAPHY
+// ============================================
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  margin-bottom: $spacing-lg;
+  color: var(--text-secondary);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: var(--accent-secondary);
+  }
+}
+
+strong, b {
+  font-weight: 600;
+}
+
+em, i {
+  font-style: italic;
+}
+
+ul, ol {
+  margin-bottom: $spacing-lg;
+  padding-left: $spacing-xl;
+}
+
+li {
+  margin-bottom: $spacing-sm;
+}
+
+blockquote {
+  font-family: $font-heading;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--text);
+  padding: $spacing-xl $spacing-2xl;
+  margin: $spacing-2xl 0;
+  border-left: 4px solid var(--accent);
+  background: var(--bg-tertiary);
+  border-radius: 0 $radius-lg $radius-lg 0;
+  position: relative;
+  
+  &::before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--accent);
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    opacity: 0.3;
+    font-family: $font-heading;
+  }
+  
+  p {
+    color: var(--text);
+    margin: 0;
+  }
+}
+
+code {
+  font-family: $font-mono;
+  font-size: 0.875em;
+  background: var(--bg-tertiary);
+  padding: 0.2em 0.4em;
+  border-radius: $radius-sm;
+}
+
+pre {
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  background: var(--bg-tertiary);
+  padding: $spacing-lg;
+  border-radius: $radius-lg;
+  overflow-x: auto;
+  margin: $spacing-xl 0;
+  
+  code {
+    background: none;
+    padding: 0;
+  }
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: $spacing-3xl 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}

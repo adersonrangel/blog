@@ -1,0 +1,99 @@
+---
+layout: default
+---
+
+{% assign author = site.authors | where: "short_name", page.author | first %}
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <!-- Post Header -->
+  <header class="post-header">
+    <div class="container">
+      <div class="post-header__meta">
+        {% if page.category %}
+        <a href="{{ '/tags/#' | append: page.category | relative_url }}" class="post-card__category post-card__category--{{ page.category | downcase }}">
+          {{ page.category }}
+        </a>
+        {% endif %}
+        <span class="post-card__date">
+          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ page.date | date: "%b %d, %Y" }}
+          </time>
+        </span>
+      </div>
+      
+      <h1 class="post-header__title" itemprop="headline">{{ page.title }}</h1>
+      
+      {% if page.excerpt %}
+      <p class="post-header__excerpt" itemprop="description">
+        {{ page.excerpt | strip_html | truncatewords: 40 }}
+      </p>
+      {% endif %}
+    </div>
+  </header>
+  
+  <!-- Featured Image -->
+  {% if page.image %}
+  <div class="container">
+    <figure class="post-featured-image">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" itemprop="image">
+    </figure>
+  </div>
+  {% endif %}
+  
+  <!-- Post Content -->
+  <div class="container">
+    <div class="post-content" itemprop="articleBody">
+      {{ content }}
+    </div>
+    
+    <!-- Tags -->
+    {% if page.tags.size > 0 %}
+    <div class="post-tags mt-2xl">
+      <div class="tags-list">
+        {% for tag in page.tags %}
+        <a href="{{ '/tags/#' | append: tag | relative_url }}" class="tag">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    
+    <!-- Post Footer -->
+    <footer class="post-footer">
+      {% if author %}
+      <div class="post-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="post-author__avatar">
+          <img src="{{ author.avatar | default: '/assets/images/default-avatar.jpg' | relative_url }}" alt="{{ author.name }}" itemprop="image">
+        </div>
+        <div class="post-author__info">
+          <h4><a href="{{ author.url | relative_url }}" itemprop="url"><span itemprop="name">{{ author.name }}</span></a></h4>
+          <p itemprop="description">{{ author.bio | truncatewords: 30 }}</p>
+        </div>
+      </div>
+      {% endif %}
+    </footer>
+  </div>
+</article>
+
+<!-- Related Posts -->
+{% assign related_posts = site.posts | where: "category", page.category | where_exp: "post", "post.url != page.url" | slice: 0, 3 %}
+{% if related_posts.size > 0 %}
+<section class="related-posts">
+  <div class="container">
+    <div class="section-header">
+      <h2>Related Posts</h2>
+    </div>
+    <div class="grid grid--3">
+      {% for post in related_posts %}
+      {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Newsletter -->
+<section class="section">
+  <div class="container container--narrow">
+    {% include newsletter.html %}
+  </div>
+</section>

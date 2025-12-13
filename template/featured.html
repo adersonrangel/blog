@@ -1,0 +1,32 @@
+---
+layout: default
+title: Featured
+description: Our hand-picked selection of the best content we have to offer.
+---
+
+<section class="section">
+  <div class="container">
+    <header class="page-header">
+      <h1>{{ page.title }}</h1>
+      <p>{{ page.description }}</p>
+    </header>
+    
+    {% assign featured_posts = site.posts | where: "featured", true %}
+    
+    {% if featured_posts.size > 0 %}
+    <div class="grid grid--3">
+      {% for post in featured_posts %}
+      {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center text-secondary">No featured posts yet. Check back soon!</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow">
+    {% include newsletter.html %}
+  </div>
+</section>

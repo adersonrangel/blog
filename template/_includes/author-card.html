@@ -1,0 +1,17 @@
+{% assign post_count = site.posts | where: "author", include.author.short_name | size %}
+
+<article class="author-card hover-lift" data-reveal>
+  <div class="author-card__avatar">
+    <img src="{{ include.author.avatar | default: '/assets/images/default-avatar.jpg' | relative_url }}" alt="{{ include.author.name }}" loading="lazy">
+  </div>
+  
+  <h3 class="author-card__name">
+    <a href="{{ include.author.url | relative_url }}">{{ include.author.name }}</a>
+  </h3>
+  
+  <span class="author-card__count">({{ post_count }} post{% if post_count != 1 %}s{% endif %})</span>
+  
+  <p class="author-card__bio">
+    {{ include.author.bio | truncatewords: 20 }}
+  </p>
+</article>

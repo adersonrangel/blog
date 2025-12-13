@@ -1,0 +1,67 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="{{ '/' | relative_url }}" class="logo">{{ site.title }}</a>
+        <p>{{ site.description }}</p>
+      </div>
+      
+      <nav class="footer__nav">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="{{ '/' | relative_url }}">Home</a></li>
+          <li><a href="{{ '/latest/' | relative_url }}">Latest</a></li>
+          <li><a href="{{ '/authors/' | relative_url }}">Authors</a></li>
+          <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+        </ul>
+      </nav>
+      
+      <nav class="footer__nav">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="{{ '/featured/' | relative_url }}">Featured</a></li>
+          <li><a href="{{ '/tags/' | relative_url }}">Topics</a></li>
+          <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <nav class="footer__nav">
+        <h4>Social</h4>
+        <ul>
+          {% if site.social.twitter %}
+          <li><a href="{{ site.social.twitter }}" target="_blank" rel="noopener">Twitter</a></li>
+          {% endif %}
+          {% if site.social.instagram %}
+          <li><a href="{{ site.social.instagram }}" target="_blank" rel="noopener">Instagram</a></li>
+          {% endif %}
+          {% if site.social.github %}
+          <li><a href="{{ site.social.github }}" target="_blank" rel="noopener">GitHub</a></li>
+          {% endif %}
+          {% if site.social.linkedin %}
+          <li><a href="{{ site.social.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+    
+    <div class="footer__bottom">
+      <p class="footer__copy">
+        {{ site.time | date: '%Y' }} © <a href="{{ '/' | relative_url }}">{{ site.title }}</a>. All rights reserved.
+      </p>
+      
+      <div class="footer__controls">
+        <button class="theme-toggle" aria-label="Toggle theme" data-theme-toggle>
+          <span class="theme-label-dark">Dark</span>
+          <span class="theme-label-light" style="display: none;">Light</span>
+        </button>
+        
+        <button class="back-to-top" data-back-to-top>
+          Back to top
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>

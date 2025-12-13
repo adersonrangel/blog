@@ -1,0 +1,12 @@
+<div class="newsletter">
+  <h3 class="newsletter__title">{{ site.newsletter.title | default: "Stay Inspired Weekly" }}</h3>
+  <p class="newsletter__subtitle">{{ site.newsletter.subtitle | default: "Your Friendly Dose of Tips & Insights!" }}</p>
+  <p class="newsletter__description">
+    {{ site.newsletter.description | default: "Every Sunday, I deliver actionable tips for enhancing productivity, practical life advice, and top-notch insights gathered from various sources, right to your email inbox." }}
+  </p>
+  
+  <form class="newsletter__form" action="#" method="POST">
+    <input type="email" name="email" placeholder="Email address" required aria-label="Email address">
+    <button type="submit" class="btn btn--primary">Subscribe</button>
+  </form>
+</div>

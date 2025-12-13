@@ -1,0 +1,59 @@
+// ============================================
+// NOMOD JEKYLL THEME
+// Main Stylesheet
+// ============================================
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+// Variables
+@import 'variables';
+
+// Base Styles
+@import 'base';
+
+// Layout
+@import 'layout';
+
+// Components
+@import 'components';
+
+// Page Styles
+@import 'pages';
+
+// Animations
+@import 'animations';
+
+// ============================================
+// SYNTAX HIGHLIGHTING (Rouge)
+// ============================================
+
+.highlight {
+  background: var(--bg-tertiary);
+  border-radius: $radius-lg;
+  overflow-x: auto;
+  
+  pre {
+    margin: 0;
+    padding: $spacing-lg;
+  }
+  
+  // Rouge syntax classes
+  .c, .c1, .cm { color: #6a737d; } // Comments
+  .k, .kd, .kn, .kp, .kr { color: #d73a49; } // Keywords
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr { color: #032f62; } // Strings
+  .n, .na, .nb, .nc, .nd, .ne, .nf, .ni, .nl, .nn, .no, .nt, .nv { color: #6f42c1; } // Names
+  .m, .mf, .mh, .mi, .mo { color: #005cc5; } // Numbers
+  .o, .ow { color: #d73a49; } // Operators
+  .p { color: #24292e; } // Punctuation
+}
+
+[data-theme="dark"] .highlight {
+  .c, .c1, .cm { color: #8b949e; }
+  .k, .kd, .kn, .kp, .kr { color: #ff7b72; }
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr { color: #a5d6ff; }
+  .n, .na, .nb, .nc, .nd, .ne, .nf, .ni, .nl, .nn, .no, .nt, .nv { color: #d2a8ff; }
+  .m, .mf, .mh, .mi, .mo { color: #79c0ff; }
+  .o, .ow { color: #ff7b72; }
+  .p { color: #c9d1d9; }
+}

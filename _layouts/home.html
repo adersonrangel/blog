@@ -1,0 +1,193 @@
+---
+layout: default
+---
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="container">
+    <div class="hero__authors">
+      <div class="hero__authors-stack">
+        {% for author in site.authors limit:5 %}
+        <a href="{{ author.url | relative_url }}" title="{{ author.name }}">
+          <img
+            src="{{ author.avatar | default: '/assets/images/default-avatar.jpg' | relative_url }}"
+            alt="{{ author.name }}"
+          />
+        </a>
+        {% endfor %}
+      </div>
+      <span class="hero__label">Meet our talented team</span>
+    </div>
+
+    <div class="hero__content">
+      <h1 class="hero__title">
+        Tutorials, Stories and Ideas for the
+        <span>Curious Developer</span>
+      </h1>
+      <p class="hero__description">
+        Join us on a journey where every post brings a fresh perspective. This
+        blog is for those who are driven by curiosity and a desire to learn.
+      </p>
+      <div class="hero__search">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+        <input type="text" placeholder="Search for the blog" id="hero-search" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Posts -->
+{% assign featured_posts = site.posts | where: "featured", true | slice: 0, 5 %}
+{% if featured_posts.size > 0 %}
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Featured</h2>
+    </div>
+    <div class="grid grid--featured">
+      {% for post in featured_posts limit:5 %} {% include post-card.html
+      post=post index=forloop.index %} {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Latest Posts -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Latest</h2>
+      <a href="{{ '/latest/' | relative_url }}" class="section-link">
+        See all
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </a>
+    </div>
+    <div class="grid grid--3" id="posts-grid">
+      {% for post in site.posts limit:6 %} {% include post-card.html post=post
+      %} {% endfor %}
+    </div>
+
+    {% if site.posts.size > 6 %}
+    <div class="text-center mt-2xl">
+      <button class="btn btn--secondary" id="load-more">Load more posts</button>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Recommended / Category Section -->
+{% assign lifestyle_posts = site.posts | where: "category", "Lifestyle" | slice:
+0, 4 %} {% if lifestyle_posts.size > 0 %}
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Recommended</h2>
+      <a href="{{ '/tags/#Lifestyle' | relative_url }}" class="section-link">
+        See all
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </a>
+    </div>
+    <div class="grid grid--4">
+      {% for post in lifestyle_posts %} {% include post-card-minimal.html
+      post=post %} {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- About Section -->
+<section class="section">
+  <div class="container">
+    <div class="about-section">
+      <div class="about-section__image">
+        <img
+          src="{{ '/assets/images/about-preview.jpg' | relative_url }}"
+          alt="About Us"
+        />
+      </div>
+      <div class="about-section__content">
+        <h3>Hello, I'm {{ site.author.name | default: "Your Name" }}</h3>
+        <p>
+          I'm a thinker and storyteller with a passion for exploring the
+          intersection of creativity and technology. Through this blog, I seek
+          to bridge the gap between design, technology, and lifestyle, offering
+          a space where ideas can flourish and innovation can thrive.
+        </p>
+        <a href="{{ '/about/' | relative_url }}" class="btn btn--secondary"
+          >Meet our team</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Top Authors -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Top authors</h2>
+      <a href="{{ '/authors/' | relative_url }}" class="section-link">
+        See all
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </a>
+    </div>
+    <div class="grid grid--3">
+      {% for author in site.authors limit:3 %} {% include author-card.html
+      author=author %} {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="section">
+  <div class="container">{% include newsletter.html %}</div>
+</section>
