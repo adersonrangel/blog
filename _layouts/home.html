@@ -57,10 +57,22 @@ layout: default
     <div class="section-header">
       <h2>Featured</h2>
     </div>
-    <div class="grid grid--featured">
-      {% for post in featured_posts limit:5 %} {% include post-card.html
-      post=post index=forloop.index %} {% endfor %}
+
+    <!-- Main Featured Post -->
+    {% assign main_featured = featured_posts | first %} {% if main_featured %}
+    <div class="featured-main">
+      {% include post-card.html post=main_featured index=1 %}
     </div>
+    {% endif %}
+
+    <!-- Secondary Featured Posts -->
+    {% assign secondary_featured = featured_posts | slice: 1, 4 %} {% if
+    secondary_featured.size > 0 %}
+    <div class="grid grid--4 mt-lg">
+      {% for post in secondary_featured %} {% include post-card-minimal.html
+      post=post %} {% endfor %}
+    </div>
+    {% endif %}
   </div>
 </section>
 {% endif %}
