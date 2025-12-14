@@ -57,10 +57,76 @@ layout: default
     <div class="section-header">
       <h2>Featured</h2>
     </div>
-    <div class="grid grid--featured">
-      {% for post in featured_posts limit:5 %} {% include post-card.html
-      post=post index=forloop.index %} {% endfor %}
+
+    <!-- Main Featured Post -->
+    {% assign main_featured = featured_posts | first %} {% if main_featured %}
+    {% assign author = site.authors | where: "short_name", main_featured.author
+    | first %}
+    <article class="featured-main" data-reveal>
+      <div class="featured-main__image">
+        {% if main_featured.image %}
+        <img
+          src="{{ main_featured.image | relative_url }}"
+          alt="{{ main_featured.title }}"
+          loading="lazy"
+        />
+        {% else %}
+        <div class="post-card__placeholder"></div>
+        {% endif %}
+      </div>
+
+      <div class="featured-main__content">
+        <div class="post-card__meta">
+          {% if main_featured.category %}
+          <a
+            href="{{ '/tags/#' | append: main_featured.category | relative_url }}"
+            class="post-card__category post-card__category--{{ main_featured.category | downcase }}"
+          >
+            {{ main_featured.category }}
+          </a>
+          {% endif %}
+          <span class="post-card__date"
+            >• {{ main_featured.date | date: "%b %d, %Y" }}</span
+          >
+        </div>
+
+        <h2 class="post-card__title">
+          <a href="{{ main_featured.url | relative_url }}"
+            >{{ main_featured.title }}</a
+          >
+        </h2>
+
+        {% if main_featured.excerpt %}
+        <p class="post-card__excerpt">
+          {{ main_featured.excerpt | strip_html | truncatewords: 25 }}
+        </p>
+        {% endif %} {% if author %}
+        <div class="post-card__author">
+          <div class="post-card__author-avatar">
+            <img
+              src="{{ author.avatar | default: '/assets/images/default-avatar.jpg' | relative_url }}"
+              alt="{{ author.name }}"
+              loading="lazy"
+            />
+          </div>
+          <div class="post-card__author-info">
+            <span>Written by</span>
+            <a href="{{ author.url | relative_url }}">{{ author.name }}</a>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </article>
+    {% endif %}
+
+    <!-- Secondary Featured Posts -->
+    {% assign secondary_featured = featured_posts | slice: 1, 4 %} {% if
+    secondary_featured.size > 0 %}
+    <div class="grid grid--4 mt-lg">
+      {% for post in secondary_featured %} {% include post-card-minimal.html
+      post=post %} {% endfor %}
     </div>
+    {% endif %}
   </div>
 </section>
 {% endif %}

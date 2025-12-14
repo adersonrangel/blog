@@ -1,23 +1,55 @@
-{% assign author = site.authors | where: "short_name", include.post.author | first %}
+{% assign author = site.authors | where: "short_name", include.post.author |
+first %}
 
 <article class="post-card" data-reveal>
-  <div class="post-card__image img-zoom">
+  <a
+    href="{{ include.post.url | relative_url }}"
+    class="post-card__image img-zoom"
+  >
     {% if include.post.image %}
-    <img src="{{ include.post.image | relative_url }}" alt="{{ include.post.title }}" loading="lazy">
+    <img
+      src="{{ include.post.image | relative_url }}"
+      alt="{{ include.post.title }}"
+      loading="lazy"
+    />
     {% else %}
     <div class="post-card__placeholder"></div>
     {% endif %}
-  </div>
-  
+  </a>
+
   <div class="post-card__content">
+    <div class="post-card__meta">
+      {% if include.post.category %}
+      <a
+        href="{{ '/tags/#' | append: include.post.category | relative_url }}"
+        class="post-card__category post-card__category--{{ include.post.category | downcase }}"
+      >
+        {{ include.post.category }}
+      </a>
+      {% endif %}
+      <span class="post-card__date"
+        >• {{ include.post.date | date: "%b %d, %Y" }}</span
+      >
+    </div>
+
     <h2 class="post-card__title">
-      <a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a>
+      <a href="{{ include.post.url | relative_url }}"
+        >{{ include.post.title }}</a
+      >
     </h2>
-    
-    {% if author %}
+
+    {% if include.post.excerpt %}
+    <p class="post-card__excerpt">
+      {{ include.post.excerpt | strip_html | truncatewords: 25 }}
+    </p>
+    {% endif %} {% if author %}
     <div class="post-card__author">
       <div class="post-card__author-avatar">
-        <img src="{{ author.avatar | default: '/assets/images/default-avatar.jpg' | relative_url }}" alt="{{ author.name }}" loading="lazy">
+        <img
+          src="{{ author.avatar | default: '/assets/images/default-avatar.jpg' | relative_url }}"
+          alt="{{ author.name }}"
+          loading="lazy"
+        />
       </div>
       <div class="post-card__author-info">
         <span>Written by</span>
