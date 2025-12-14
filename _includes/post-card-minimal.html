@@ -2,7 +2,10 @@
 first %}
 
 <article class="post-card" data-reveal>
-  <div class="post-card__image img-zoom">
+  <a
+    href="{{ include.post.url | relative_url }}"
+    class="post-card__image img-zoom"
+  >
     {% if include.post.image %}
     <img
       src="{{ include.post.image | relative_url }}"
@@ -12,7 +15,7 @@ first %}
     {% else %}
     <div class="post-card__placeholder"></div>
     {% endif %}
-  </div>
+  </a>
 
   <div class="post-card__content">
     <div class="post-card__meta">
