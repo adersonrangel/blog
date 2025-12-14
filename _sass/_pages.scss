@@ -6,7 +6,7 @@
   position: relative;
   padding: $spacing-4xl 0;
   overflow: hidden;
-  
+
   @media (min-width: $breakpoint-lg) {
     padding: 6rem 0;
   }
@@ -16,9 +16,16 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: 
-    radial-gradient(ellipse at 30% 20%, rgba($accent-primary, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 80%, rgba($accent-secondary, 0.06) 0%, transparent 50%);
+  background: radial-gradient(
+      ellipse at 30% 20%,
+      rgba($accent-primary, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 70% 80%,
+      rgba($accent-secondary, 0.06) 0%,
+      transparent 50%
+    );
 }
 
 .hero__authors {
@@ -30,7 +37,7 @@
 
 .hero__authors-stack {
   display: flex;
-  
+
   a {
     display: block;
     width: 48px;
@@ -41,19 +48,19 @@
     margin-left: -12px;
     transition: transform $transition-fast;
     background: var(--bg-tertiary);
-    
+
     &:first-child {
       margin-left: 0;
     }
-    
+
     &:hover {
       transform: translateY(-4px);
       z-index: 1;
     }
-    
+
     img {
-      width: 100%;
-      height: 100%;
+      width: 100% !important;
+      height: 100% !important;
       object-fit: cover;
     }
   }
@@ -78,7 +85,7 @@
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin-bottom: $spacing-xl;
-  
+
   span {
     background: $accent-gradient;
     -webkit-background-clip: text;
@@ -101,7 +108,7 @@
   max-width: 500px;
   margin: 0 auto;
   position: relative;
-  
+
   svg {
     position: absolute;
     left: $spacing-lg;
@@ -111,7 +118,7 @@
     height: 20px;
     color: var(--text-tertiary);
   }
-  
+
   input {
     width: 100%;
     padding: 1rem 1rem 1rem 3rem;
@@ -122,11 +129,11 @@
     color: var(--text);
     outline: none;
     transition: all $transition-fast;
-    
+
     &::placeholder {
       color: var(--text-tertiary);
     }
-    
+
     &:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba($accent-primary, 0.1);
@@ -145,7 +152,7 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-2xl;
-  
+
   @media (min-width: $breakpoint-lg) {
     flex-direction: row;
     align-items: center;
@@ -160,15 +167,15 @@
   border-radius: $radius-xl;
   overflow: hidden;
   background: var(--bg-tertiary);
-  
+
   @media (min-width: $breakpoint-lg) {
     width: 280px;
     height: 280px;
   }
-  
+
   img {
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
     object-fit: cover;
   }
 }
@@ -178,7 +185,7 @@
     font-size: 1.5rem;
     margin-bottom: $spacing-md;
   }
-  
+
   p {
     color: var(--text-secondary);
     margin-bottom: $spacing-lg;
@@ -195,7 +202,7 @@
   border-radius: $radius-2xl;
   padding: $spacing-2xl;
   text-align: center;
-  
+
   @media (min-width: $breakpoint-md) {
     padding: $spacing-3xl;
   }
@@ -206,7 +213,7 @@
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: $spacing-sm;
-  
+
   @media (min-width: $breakpoint-md) {
     font-size: 2rem;
   }
@@ -230,11 +237,11 @@
   gap: $spacing-md;
   max-width: 400px;
   margin: 0 auto;
-  
+
   @media (min-width: $breakpoint-sm) {
     flex-direction: row;
   }
-  
+
   input {
     flex: 1;
     padding: 0.875rem 1.25rem;
@@ -245,16 +252,16 @@
     color: var(--text);
     outline: none;
     transition: all $transition-fast;
-    
+
     &::placeholder {
       color: var(--text-tertiary);
     }
-    
+
     &:focus {
       border-color: var(--accent);
     }
   }
-  
+
   button {
     @extend .btn;
     @extend .btn--primary;
@@ -275,7 +282,7 @@
   display: grid;
   gap: $spacing-2xl;
   margin-bottom: $spacing-2xl;
-  
+
   @media (min-width: $breakpoint-md) {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: $spacing-3xl;
@@ -287,7 +294,7 @@
     display: inline-block;
     margin-bottom: $spacing-lg;
   }
-  
+
   p {
     color: var(--text-secondary);
     font-size: 0.9375rem;
@@ -305,21 +312,21 @@
     color: var(--text);
     margin-bottom: $spacing-lg;
   }
-  
+
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  
+
   li {
     margin-bottom: $spacing-sm;
   }
-  
+
   a {
     font-size: 0.9375rem;
     color: var(--text-secondary);
-    
+
     &:hover {
       color: var(--accent);
     }
@@ -332,7 +339,7 @@
   gap: $spacing-md;
   padding-top: $spacing-xl;
   border-top: 1px solid var(--border);
-  
+
   @media (min-width: $breakpoint-md) {
     flex-direction: row;
     justify-content: space-between;
@@ -343,10 +350,10 @@
 .footer__copy {
   font-size: 0.875rem;
   color: var(--text-tertiary);
-  
+
   a {
     color: var(--text-secondary);
-    
+
     &:hover {
       color: var(--accent);
     }
@@ -367,11 +374,11 @@
   color: var(--text-secondary);
   cursor: pointer;
   transition: color $transition-fast;
-  
+
   &:hover {
     color: var(--accent);
   }
-  
+
   svg {
     width: 16px;
     height: 16px;
@@ -415,7 +422,7 @@
   border-radius: $radius-xl;
   overflow: hidden;
   background: var(--bg-tertiary);
-  
+
   img {
     width: 100%;
     height: auto;
@@ -427,31 +434,37 @@
 .post-content {
   max-width: 720px;
   margin: 0 auto;
-  
-  h2, h3, h4, h5, h6 {
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin-top: $spacing-2xl;
     margin-bottom: $spacing-lg;
   }
-  
+
   img {
     border-radius: $radius-lg;
     margin: $spacing-2xl 0;
-    
+    width: 100%;
+    height: auto !important;
+
     &[src*="#wide"] {
       width: calc(100% + 200px);
       max-width: none;
       margin-left: -100px;
-      
+
       @media (max-width: $breakpoint-lg) {
         width: 100%;
         margin-left: 0;
       }
     }
   }
-  
+
   figure {
     margin: $spacing-2xl 0;
-    
+
     figcaption {
       text-align: center;
       font-size: 0.875rem;
@@ -460,21 +473,24 @@
       font-style: italic;
     }
   }
-  
+
   // Image grid
   .image-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: $spacing-md;
     margin: $spacing-2xl 0;
-    
+
     @media (max-width: $breakpoint-md) {
       grid-template-columns: 1fr;
     }
-    
+
     img {
       margin: 0;
       aspect-ratio: 1;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
     }
   }
 }
@@ -500,10 +516,10 @@
   border-radius: $radius-full;
   overflow: hidden;
   flex-shrink: 0;
-  
+
   img {
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
     object-fit: cover;
   }
 }
@@ -512,16 +528,16 @@
   h4 {
     font-size: 1.25rem;
     margin-bottom: $spacing-sm;
-    
+
     a {
       color: var(--text);
-      
+
       &:hover {
         color: var(--accent);
       }
     }
   }
-  
+
   p {
     font-size: 0.9375rem;
     color: var(--text-secondary);
@@ -543,11 +559,11 @@
   padding: $spacing-3xl 0;
   max-width: 600px;
   margin: 0 auto;
-  
+
   h1 {
     margin-bottom: $spacing-md;
   }
-  
+
   p {
     color: var(--text-secondary);
     font-size: 1.125rem;
@@ -563,11 +579,11 @@
   margin: 0 auto;
   text-align: center;
   padding: $spacing-3xl 0;
-  
+
   h1 {
     margin-bottom: $spacing-lg;
   }
-  
+
   .lead {
     font-size: 1.25rem;
     color: var(--text-secondary);
@@ -581,12 +597,12 @@
   margin: 0 auto $spacing-3xl;
   border-radius: $radius-xl;
   overflow: hidden;
-  
+
   img {
     width: 100%;
     height: auto;
   }
-  
+
   figcaption {
     text-align: center;
     font-size: 0.875rem;
@@ -622,7 +638,7 @@
   overflow: hidden;
   margin-bottom: $spacing-xl;
   background: var(--bg-tertiary);
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -645,7 +661,7 @@
   display: flex;
   gap: $spacing-md;
   margin-top: $spacing-xl;
-  
+
   a {
     display: flex;
     align-items: center;
@@ -656,12 +672,12 @@
     background: var(--bg-tertiary);
     color: var(--text-secondary);
     transition: all $transition-fast;
-    
+
     &:hover {
       background: var(--accent);
       color: white;
     }
-    
+
     svg {
       width: 18px;
       height: 18px;

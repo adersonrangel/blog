@@ -60,9 +60,63 @@ layout: default
 
     <!-- Main Featured Post -->
     {% assign main_featured = featured_posts | first %} {% if main_featured %}
-    <div class="featured-main">
-      {% include post-card.html post=main_featured index=1 %}
-    </div>
+    {% assign author = site.authors | where: "short_name", main_featured.author
+    | first %}
+    <article class="featured-main" data-reveal>
+      <div class="featured-main__image">
+        {% if main_featured.image %}
+        <img
+          src="{{ main_featured.image | relative_url }}"
+          alt="{{ main_featured.title }}"
+          loading="lazy"
+        />
+        {% else %}
+        <div class="post-card__placeholder"></div>
+        {% endif %}
+      </div>
+
+      <div class="featured-main__content">
+        <div class="post-card__meta">
+          {% if main_featured.category %}
+          <a
+            href="{{ '/tags/#' | append: main_featured.category | relative_url }}"
+            class="post-card__category post-card__category--{{ main_featured.category | downcase }}"
+          >
+            {{ main_featured.category }}
+          </a>
+          {% endif %}
+          <span class="post-card__date"
+            >• {{ main_featured.date | date: "%b %d, %Y" }}</span
+          >
+        </div>
+
+        <h2 class="post-card__title">
+          <a href="{{ main_featured.url | relative_url }}"
+            >{{ main_featured.title }}</a
+          >
+        </h2>
+
+        {% if main_featured.excerpt %}
+        <p class="post-card__excerpt">
+          {{ main_featured.excerpt | strip_html | truncatewords: 25 }}
+        </p>
+        {% endif %} {% if author %}
+        <div class="post-card__author">
+          <div class="post-card__author-avatar">
+            <img
+              src="{{ author.avatar | default: '/assets/images/default-avatar.jpg' | relative_url }}"
+              alt="{{ author.name }}"
+              loading="lazy"
+            />
+          </div>
+          <div class="post-card__author-info">
+            <span>Written by</span>
+            <a href="{{ author.url | relative_url }}">{{ author.name }}</a>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </article>
     {% endif %}
 
     <!-- Secondary Featured Posts -->
